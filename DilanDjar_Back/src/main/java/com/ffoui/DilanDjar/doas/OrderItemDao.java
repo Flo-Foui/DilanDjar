@@ -19,7 +19,7 @@ public class OrderItemDao {
     private final RowMapper<OrderItem> orderItemRowMapper = (rs, _) -> new OrderItem(
             rs.getInt("id"),
             rs.getInt("order_id"),
-            rs.getInt("product_id"),
+            rs.getInt("products_id"),
             rs.getInt("quantity")
     );
 
@@ -38,12 +38,12 @@ public class OrderItemDao {
     }
 
     public boolean createOrderItem(OrderItem orderItem) {
-        String sql = "INSERT INTO order_item (order_id, product_id, quantity) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO order_item (order_id, products_id, quantity) VALUES (?, ?, ?)";
         int rowsAffected = jdbcTemplate.update(sql, orderItem.getOrderId(), orderItem.getProductId(), orderItem.getQuantity());
         return rowsAffected > 0;
     }
 
-    public boolean deleteOrderItem(int id) {
+    public boolean deleteOrderItem(Integer id) {
         String sql = "DELETE FROM order_item WHERE id = ?";
         int rowsAffected = jdbcTemplate.update(sql, id);
         return rowsAffected > 0;

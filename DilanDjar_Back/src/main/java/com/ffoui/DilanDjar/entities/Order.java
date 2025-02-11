@@ -21,7 +21,7 @@ public class Order {
         this.id = id;
         this.userId = userId;
         this.email = email;
-        this.orderDate = orderDate;
+        this.orderDate = (orderDate != null) ? orderDate : LocalDateTime.now();
     }
 
     public int getId() {

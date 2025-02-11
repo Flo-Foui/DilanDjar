@@ -29,16 +29,25 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<String> createUser(@Valid @RequestBody User user) {
-        return userDao.createUser(user) ? ResponseEntity.ok("User created") : ResponseEntity.badRequest().body("User not created");
+        return userDao.createUser(user) ?
+                ResponseEntity.ok("User created")
+                :
+                ResponseEntity.badRequest().body("User not created");
     }
 
     @PutMapping
     public ResponseEntity<String> updateUser(@Valid @RequestBody User user) {
-        return userDao.updateUser(user) ? ResponseEntity.ok("User updated") : ResponseEntity.badRequest().body("User not updated");
+        return userDao.updateUser(user) ?
+                ResponseEntity.ok("User updated")
+                :
+                ResponseEntity.badRequest().body("User not updated");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable int id) {
-        return userDao.deleteUser(id) ? ResponseEntity.ok("User deleted") : ResponseEntity.badRequest().body("User not deleted");
+    public ResponseEntity<String> deleteUser(@PathVariable Integer id) {
+        return userDao.deleteUser(id) ?
+                ResponseEntity.ok("User deleted")
+                :
+                ResponseEntity.badRequest().body("User not deleted");
     }
 }

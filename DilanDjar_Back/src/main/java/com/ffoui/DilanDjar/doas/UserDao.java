@@ -57,7 +57,7 @@ public class UserDao {
         return rowsAffected > 0;
     }
 
-    public boolean deleteUser(int id) {
+    public boolean deleteUser(Integer id) {
         String sql = "DELETE FROM user WHERE id = ?";
         int rowsAffected = jdbcTemplate.update(sql, id);
         return rowsAffected > 0;

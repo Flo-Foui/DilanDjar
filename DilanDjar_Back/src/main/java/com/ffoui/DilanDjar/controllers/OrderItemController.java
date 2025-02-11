@@ -31,11 +31,17 @@ public class OrderItemController {
 
     @PostMapping
     public ResponseEntity<String> createOrderItem(@Valid @RequestBody OrderItem orderItem) {
-        return orderItemDao.createOrderItem(orderItem) ? ResponseEntity.ok("OrderItem created") : ResponseEntity.badRequest().body("OrderItem not created");
+        return orderItemDao.createOrderItem(orderItem) ?
+                ResponseEntity.ok("OrderItem created")
+                :
+                ResponseEntity.badRequest().body("OrderItem not created");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteOrderItem(@PathVariable int id) {
-        return orderItemDao.deleteOrderItem(id) ? ResponseEntity.ok("OrderItem deleted") : ResponseEntity.badRequest().body("OrderItem not deleted");
+    public ResponseEntity<String> deleteOrderItem(@PathVariable Integer id) {
+        return orderItemDao.deleteOrderItem(id) ?
+                ResponseEntity.ok("OrderItem deleted")
+                :
+                ResponseEntity.badRequest().body("OrderItem not deleted");
     }
 }

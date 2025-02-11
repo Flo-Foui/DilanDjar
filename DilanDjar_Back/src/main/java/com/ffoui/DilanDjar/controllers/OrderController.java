@@ -24,11 +24,17 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<String> createOrder(@Valid @RequestBody Order order) {
-        return orderDao.createOrder(order) ? ResponseEntity.ok("Order created") : ResponseEntity.badRequest().body("Order not created");
+        return orderDao.createOrder(order) ?
+                ResponseEntity.ok("Order created")
+                :
+                ResponseEntity.badRequest().body("Order not created");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteOrder(@PathVariable int id) {
-        return orderDao.deleteOrder(id) ? ResponseEntity.ok("Order deleted") : ResponseEntity.badRequest().body("Order not deleted");
+    public ResponseEntity<String> deleteOrder(@PathVariable Integer id) {
+        return orderDao.deleteOrder(id) ?
+                ResponseEntity.ok("Order deleted")
+                :
+                ResponseEntity.badRequest().body("Order not deleted");
     }
 }

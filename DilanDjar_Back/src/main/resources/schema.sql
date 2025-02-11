@@ -5,10 +5,11 @@ CREATE TABLE IF NOT EXISTS user (
     role varchar(50) not null
 );
 
-CREATE TABLE IF NOT EXISTS product (
+CREATE TABLE IF NOT EXISTS products (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) UNIQUE NOT NULL,
     description TEXT,
+    poster_path VARCHAR(255),
     price DECIMAL(10,2) NOT NULL,
     stock INT NOT NULL CHECK (stock >= 0)
 );
@@ -24,8 +25,8 @@ CREATE TABLE IF NOT EXISTS orders (
 CREATE TABLE IF NOT EXISTS order_item (
     id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT REFERENCES orders(id),
-    product_id INT REFERENCES product(id),
+    products_id INT REFERENCES products(id),
     quantity INT NOT NULL CHECK (quantity > 0),
     FOREIGN KEY (order_id) REFERENCES orders(id),
-    FOREIGN KEY (product_id) REFERENCES product(id)
+    FOREIGN KEY (products_id) REFERENCES products(id)
 );

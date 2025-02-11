@@ -16,28 +16,37 @@ public class ProductController {
         this.productDao = productDao;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Product> getAllProducts() {
         return productDao.getAllProducts();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable int id) {
+    public ResponseEntity<Product> getProductById(@PathVariable Integer id) {
         return ResponseEntity.ok(productDao.getProductById(id));
     }
 
     @PostMapping
     public ResponseEntity<String> createProduct(@Valid @RequestBody Product product) {
-        return productDao.createProduct(product) ? ResponseEntity.ok("Product created") : ResponseEntity.badRequest().body("Product not created");
+        return productDao.createProduct(product) ?
+                ResponseEntity.ok("Product created")
+                :
+                ResponseEntity.badRequest().body("Product not created");
     }
 
     @PutMapping
     public ResponseEntity<String> updateProduct(@Valid @RequestBody Product product) {
-        return productDao.updateProduct(product) ? ResponseEntity.ok("Product updated") : ResponseEntity.badRequest().body("Product not updated");
+        return productDao.updateProduct(product.getId(), product) ?
+                ResponseEntity.ok("Product updated")
+                :
+                ResponseEntity.badRequest().body("Product not updated");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable int id) {
-        return productDao.deleteProduct(id) ? ResponseEntity.ok("Product deleted") : ResponseEntity.badRequest().body("Product not deleted");
+    public ResponseEntity<String> deleteProduct(@PathVariable Integer id) {
+        return productDao.deleteProduct(id) ?
+                ResponseEntity.ok("Product deleted")
+                :
+                ResponseEntity.badRequest().body("Product not deleted");
     }
 }

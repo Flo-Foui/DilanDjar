@@ -1,7 +1,6 @@
 package com.ffoui.DilanDjar.doas;
 
 import com.ffoui.DilanDjar.entities.Order;
-import com.ffoui.DilanDjar.entities.Product;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -29,7 +28,7 @@ public class OrderDao {
     }
 
     public List<Order> getOrdersByEmail(String email) {
-        String sql = "SELECT * FROM product WHERE email = ?";
+        String sql = "SELECT * FROM products WHERE email = ?";
         return jdbcTemplate.query(sql, orderRowMapper, email);
     }
 
@@ -39,7 +38,7 @@ public class OrderDao {
         return rowsAffected > 0;
     }
 
-    public boolean deleteOrder(int id) {
+    public boolean deleteOrder(Integer id) {
         String sql = "DELETE FROM orders WHERE id = ?";
         int rowsAffected = jdbcTemplate.update(sql, id);
         return rowsAffected > 0;
