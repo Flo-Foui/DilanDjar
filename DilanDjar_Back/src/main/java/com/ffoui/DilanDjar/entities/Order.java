@@ -1,11 +1,17 @@
 package com.ffoui.DilanDjar.entities;
 
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Order {
     private int id;
+
+    @NotNull(message = "L'Id utilisateur est obligatoire")
     private int userId;
+
+    @Email(message = "L'email doit être valide")
+    @NotNull(message = "L'email est obligatoire")
     private String email;
     private LocalDateTime orderDate;
 

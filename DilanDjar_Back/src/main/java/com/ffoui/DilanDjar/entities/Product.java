@@ -1,10 +1,19 @@
 package com.ffoui.DilanDjar.entities;
 
+import jakarta.validation.constraints.*;
+
 public class Product {
     private int id;
+
+    @NotBlank(message = "Le nom du produit est obligatoire")
     private String name;
     private String description;
+
+    @NotNull(message = "Le prix est ne peut pas être Null")
+    @Min(value = 0, message = "Le prix ne peut pas être négatif")
     private Double price;
+
+    @Min(value = 0, message = "Le stock ne peut pas être négatif")
     private int stock;
 
     public Product() {}

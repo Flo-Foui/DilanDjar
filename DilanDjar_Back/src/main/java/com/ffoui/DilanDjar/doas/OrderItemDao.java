@@ -28,12 +28,13 @@ public class OrderItemDao {
         return jdbcTemplate.query(sql, orderItemRowMapper);
     }
 
-    public OrderItem getOrderById(int id) {
-        String sql = "SELECT * FROM user WHERE id = ?";
-        return jdbcTemplate.query(sql, orderItemRowMapper, id)
-                .stream()
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Commande avec l'Id : " + id + " n'existe pas"));
+    public List<OrderItem> getOrderItemsByEmail(String email) {
+        String sql = """
+        SELECT oi.* FROM order_item oi
+        JOIN orders o ON oi.order_id = o.id
+        WHERE o.email = ?
+    """;
+        return jdbcTemplate.query(sql, orderItemRowMapper, email);
     }
 
     public boolean createOrderItem(OrderItem orderItem) {
