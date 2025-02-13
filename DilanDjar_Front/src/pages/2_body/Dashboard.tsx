@@ -3,6 +3,7 @@ import {get} from "../../api/api";
 import Box from "@mui/material/Box";
 import PlantItem from "../../components/PlantItem";
 import {PlantType} from "../../@types/PlantType";
+import Page from "../../components/layout/Page";
 
 const Dashboard: FC<{}> = ({}) => {
     const [plantCollection, setPlantCollection] = useState<PlantType[] | undefined>(undefined)
@@ -19,13 +20,12 @@ const Dashboard: FC<{}> = ({}) => {
     }
     useEffect(() => {
         hydrate();
-    },[]);
+    }, []);
 
     return (
         <>
-            Dash
-            {!isPending && plantCollection &&
-                //<Pages>
+            <Page>
+                {!isPending && plantCollection &&
                     <Box sx={{
                         display: "flex",
                         flexDirection: "row",
@@ -37,8 +37,8 @@ const Dashboard: FC<{}> = ({}) => {
                             <PlantItem plant={plant}/>
                         ))}
                     </Box>
-                //</Pages>
-            }
+                }
+            </Page>
         </>
     );
 };

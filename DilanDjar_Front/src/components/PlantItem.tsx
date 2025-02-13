@@ -3,11 +3,11 @@ import {useNavigate} from "react-router";
 import {Box, Button, Card, CardContent, CardMedia, Typography} from "@mui/material";
 import {PlantType} from "../@types/PlantType";
 
-const PlantItem: FC<{plant: PlantType}> = ({plant}) => {
+const PlantItem: FC<{ plant: PlantType }> = ({plant}) => {
 
     const navigate = useNavigate();
-    
-    return(
+
+    return (
         <Box sx={{
             height: 430, width: 200, margin: "15px 10px",
             transition: "transform 0.3s ease-in-out", "&:hover": {transform: "scale(1.1)"}
@@ -19,7 +19,8 @@ const PlantItem: FC<{plant: PlantType}> = ({plant}) => {
                                image={plant.poster_path ?
                                    "https://image.tmdb.org/t/p/original/" + plant.poster_path
                                    :
-                                   "https://placehold.co/100x150?text=No\nImage"}
+                                   "https://placehold.co/100x150?text=No\nImage"
+                               }
                                alt={plant.name}
                     />
                     <CardContent sx={{

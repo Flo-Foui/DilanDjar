@@ -6,15 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e2066e35-7dac-43d2-8017-b99166d6f0d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/OrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/OrderItemDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/OrderItemDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/ProductDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/entities/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/entities/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/exceptions/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/resources/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,20 +21,20 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/DilanDjar_Front" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Flo-Foui"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Flo-Foui&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:Flo-Foui/dilanDjar.git",
-    "accountId": "4eafea3b-b894-4714-bf56-90340bc41297"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Flo-Foui/dilanDjar.git&quot;,
+    &quot;accountId&quot;: &quot;4eafea3b-b894-4714-bf56-90340bc41297&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -55,22 +46,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/greta/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/greta/Desktop/DilanDjar/DilanDjar_Front/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editing.templates",
+    "ts.external.directory.path": "/home/greta/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/DilanDjar_Front/public" />
+      <recent name="$PROJECT_DIR$/DilanDjar_Front/src" />
+      <recent name="$PROJECT_DIR$/DilanDjar_Front" />
+      <recent name="$PROJECT_DIR$/DilanDjar_Front/src/pages/1_header" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/DilanDjar_Front/src/context" />
+      <recent name="$PROJECT_DIR$/DilanDjar_Front/src/components/header" />
+      <recent name="$PROJECT_DIR$/DilanDjar_Front/src" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -89,6 +94,8 @@
       <workItem from="1739194043242" duration="3637000" />
       <workItem from="1739197930703" duration="9000" />
       <workItem from="1739367081288" duration="3928000" />
+      <workItem from="1739372246864" duration="26248000" />
+      <workItem from="1739454204073" duration="957000" />
     </task>
     <servers />
   </component>
