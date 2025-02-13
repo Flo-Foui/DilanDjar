@@ -3,6 +3,7 @@ import {FC} from 'react';
 const Search: FC<{}> = ({}) => {
     return (
         <>
+            search
 
         </>
     );

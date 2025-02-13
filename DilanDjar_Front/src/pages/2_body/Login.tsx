@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-const PlantsDetails: FC<{}> = ({}) => {
+const Login: FC<{}> = ({}) => {
     return (
         <>
 
@@ -8,4 +8,4 @@ const PlantsDetails: FC<{}> = ({}) => {
     );
 };
 
-export default PlantsDetails;
+export default Login;

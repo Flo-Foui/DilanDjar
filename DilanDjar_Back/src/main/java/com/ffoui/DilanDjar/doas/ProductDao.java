@@ -32,7 +32,10 @@ public class ProductDao {
 
     public Product getProductById(Integer id) {
         String sql = "SELECT * FROM products WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, productRowMapper, id);
+        return jdbcTemplate.query(sql, productRowMapper, id)
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("Produit avec l'Id : " + id + " n'existe pas"));
     }
 
     private boolean productExistsByName(String name) {
@@ -72,6 +75,10 @@ public class ProductDao {
     }
 
     public boolean deleteProduct(Integer id) {
+        if (!productExistsById(id)) {
+            throw new ResourceNotFoundException("Produit avec l'ID : " + id + " n'existe pas");
+        }
+
         String sql = "DELETE FROM products WHERE id = ?";
         int rowsAffected = jdbcTemplate.update(sql, id);
         return rowsAffected > 0;

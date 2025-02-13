@@ -1,6 +1,7 @@
 package com.ffoui.DilanDjar.doas;
 
 import com.ffoui.DilanDjar.entities.User;
+import com.ffoui.DilanDjar.exceptions.ResourceNotFoundException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -33,7 +34,7 @@ public class UserDao {
         return jdbcTemplate.query(sql, userRowMapper, email)
                 .stream()
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Utilisateur avec l'Email : " + email + " n'existe pas"));
+                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur avec l'Email : " + email + " n'existe pas"));
     }
 
     public boolean createUser(User user) {

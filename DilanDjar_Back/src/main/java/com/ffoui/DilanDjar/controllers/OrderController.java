@@ -2,6 +2,7 @@ package com.ffoui.DilanDjar.controllers;
 
 import com.ffoui.DilanDjar.doas.OrderDao;
 import com.ffoui.DilanDjar.entities.Order;
+import com.ffoui.DilanDjar.entities.Product;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,11 @@ public class OrderController {
     @GetMapping
     public List<Order> getAllOrders() {
         return orderDao.getAllOrders();
+    }
+
+    @GetMapping("/{email}")
+    public ResponseEntity<List<Order>> getOrdersByEmail(@PathVariable String email) {
+        return ResponseEntity.ok(orderDao.getOrdersByEmail(email));
     }
 
     @PostMapping

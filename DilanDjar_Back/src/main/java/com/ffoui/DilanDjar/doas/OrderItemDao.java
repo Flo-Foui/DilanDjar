@@ -1,6 +1,7 @@
 package com.ffoui.DilanDjar.doas;
 
 import com.ffoui.DilanDjar.entities.OrderItem;
+import com.ffoui.DilanDjar.exceptions.ResourceNotFoundException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -37,13 +38,26 @@ public class OrderItemDao {
         return jdbcTemplate.query(sql, orderItemRowMapper, email);
     }
 
+    private boolean orderExists(int orderId) {
+        String sql = "SELECT COUNT(*) FROM orders WHERE id = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, orderId);
+        return count != null && count > 0;
+    }
+
     public boolean createOrderItem(OrderItem orderItem) {
+        /*if (!orderExists(id)) {
+            throw new ResourceNotFoundException("Commande avec l'ID " + id + " introuvable");
+        }*/
+
         String sql = "INSERT INTO order_item (order_id, products_id, quantity) VALUES (?, ?, ?)";
         int rowsAffected = jdbcTemplate.update(sql, orderItem.getOrderId(), orderItem.getProductId(), orderItem.getQuantity());
         return rowsAffected > 0;
     }
 
     public boolean deleteOrderItem(Integer id) {
+        if (!orderExists(id)) {
+            throw new ResourceNotFoundException("Commande avec l'ID " + id + " introuvable");
+        }
         String sql = "DELETE FROM order_item WHERE id = ?";
         int rowsAffected = jdbcTemplate.update(sql, id);
         return rowsAffected > 0;

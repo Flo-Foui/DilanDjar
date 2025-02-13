@@ -1,8 +1,7 @@
 package com.ffoui.DilanDjar.entities;
 
-import jakarta.validation.constraints.*;
-
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 
 public class Order {
     private int id;
@@ -13,15 +12,14 @@ public class Order {
     @Email(message = "L'email doit être valide")
     @NotNull(message = "L'email est obligatoire")
     private String email;
-    private LocalDateTime orderDate;
 
-    public Order() {}
+    public Order() {
+    }
 
-    public Order(int id, int userId, String email, LocalDateTime orderDate) {
+    public Order(int id, int userId, String email) {
         this.id = id;
         this.userId = userId;
         this.email = email;
-        this.orderDate = (orderDate != null) ? orderDate : LocalDateTime.now();
     }
 
     public int getId() {
@@ -36,10 +34,6 @@ public class Order {
         return email;
     }
 
-    public LocalDateTime getOrderDate() {
-        return orderDate;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -50,10 +44,6 @@ public class Order {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
     }
 }
 
