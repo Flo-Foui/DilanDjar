@@ -1,9 +1,17 @@
 package com.ffoui.DilanDjar.entities;
 
+import jakarta.validation.constraints.*;
+
 public class OrderItem {
     private int id;
+
+    @NotNull(message = "L'Id de la commande est obligatoire")
     private int orderId;
+
+    @NotNull(message = "L'Id du produit est obligatoire")
     private int productId;
+
+    @Min(value = 1, message = "La quantité minimale doit être de 1")
     private int quantity;
 
     public OrderItem() {}

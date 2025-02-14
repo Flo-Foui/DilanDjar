@@ -1,6 +1,6 @@
 package com.ffoui.DilanDjar.services;
 
-import com.ffoui.DilanDjar.doas.UserDao;
+import com.ffoui.DilanDjar.daos.UserDao;
 import com.ffoui.DilanDjar.entities.CustomUserDetails;
 import com.ffoui.DilanDjar.entities.User;
 import org.springframework.security.core.userdetails.UserDetails;
