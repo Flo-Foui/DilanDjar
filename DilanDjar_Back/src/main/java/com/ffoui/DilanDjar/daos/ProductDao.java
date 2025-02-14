@@ -1,7 +1,7 @@
 package com.ffoui.DilanDjar.daos;
 
 import com.ffoui.DilanDjar.entities.Product;
-import com.ffoui.DilanDjar.exceptions.ResourceNotFoundException;
+import com.ffoui.DilanDjar.exceptions.DuplicateResourceException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -16,76 +16,60 @@ public class ProductDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private final RowMapper<Product> productRowMapper = (rs, _) -> new Product(
-            rs.getInt("id"),
-            rs.getString("name"),
-            rs.getString("description"),
-            rs.getString("poster_path"),
-            rs.getDouble("price"),
-            rs.getInt("stock")
-    );
+    private final RowMapper<Product> productRowMapper = (rs, rowNum) -> {
+        Product product = new Product();
+        product.setId(rs.getInt("id"));
+        product.setName(rs.getString("name"));
+        product.setDescription(rs.getString("description"));
+        product.setPosterPath(rs.getString("poster_path"));
+        product.setPrice(rs.getDouble("price"));
+        product.setStock(rs.getInt("stock"));
+        return product;
+    };
 
     public List<Product> getAllProducts() {
         String sql = "SELECT * FROM products";
         return jdbcTemplate.query(sql, productRowMapper);
     }
 
-    public Product getProductById(Integer id) {
+    public Product getProductById(int id) {
         String sql = "SELECT * FROM products WHERE id = ?";
-        return jdbcTemplate.query(sql, productRowMapper, id)
-                .stream()
-                .findFirst()
-                .orElseThrow(() -> new ResourceNotFoundException("Produit avec l'Id : " + id + " n'existe pas"));
+        return jdbcTemplate.queryForObject(sql, productRowMapper, id);
     }
 
-    private boolean productExistsByName(String name) {
-        String checkSql = "SELECT COUNT(*) FROM products WHERE name = ?";
-        Integer count = jdbcTemplate.queryForObject(checkSql, Integer.class, name);
-        return count != null && count > 0;
-    }
-
-    public boolean createProduct(Product product) {
+    public boolean addProduct(Product product) {
         if (productExistsByName(product.getName())) {
-            throw new ResourceNotFoundException("Produit avec le nom : " + product.getName() + " existe déjà");
+            throw new DuplicateResourceException("Produit avec le nom : " + product.getName() + " existe déjà");
         }
-
         String sql = "INSERT INTO products (name, description, poster_path, price, stock) VALUES (?, ?, ?, ?, ?)";
         int rowsAffected = jdbcTemplate.update(sql, product.getName(), product.getDescription(), product.getPosterPath(), product.getPrice(), product.getStock());
         return rowsAffected > 0;
     }
 
-    private boolean productExistsById(Integer id) {
-        String checkSql = "SELECT COUNT(*) FROM products WHERE id = ?";
-        Integer count = jdbcTemplate.queryForObject(checkSql, Integer.class, id);
-        return count != null && count > 0;
+    public int updateProduct(Product product) {
+        String sql = "UPDATE products SET name = ?, description = ?, poster_path = ?, price = ?, stock = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, product.getName(), product.getDescription(), product.getPosterPath(), product.getPrice(), product.getStock(), product.getId());
     }
 
-    public boolean updateProduct(Integer id, Product product) {
-        if (!productExistsById(id)) {
-            throw new ResourceNotFoundException("Produit avec l'ID : " + id + " n'existe pas");
-        }
-
-        String sql = "UPDATE products SET description = ?, poster_path = ?, price = ?, stock = ? WHERE id = ?";
-        int rowsAffected = jdbcTemplate.update(sql, product.getDescription(), product.getPosterPath(), product.getPrice(), product.getStock(), id);
-
-        if (rowsAffected <= 0) {
-            throw new RuntimeException("Échec de la mise à jour du produit avec l'ID : " + id);
-        }
-        return true;
-    }
-
-    public boolean deleteProduct(Integer id) {
-        if (!productExistsById(id)) {
-            throw new ResourceNotFoundException("Produit avec l'ID : " + id + " n'existe pas");
-        }
-
+    public int deleteProduct(int id) {
         String sql = "DELETE FROM products WHERE id = ?";
-        int rowsAffected = jdbcTemplate.update(sql, id);
-        return rowsAffected > 0;
+        return jdbcTemplate.update(sql, id);
     }
 
     public void updateStock(int productId, int quantity) {
-        String sql = "UPDATE products SET stock = stock - ? WHERE id = ?";
+        String sql = "UPDATE products SET stock = GREATEST(stock - ?, 0) WHERE id = ?";
         jdbcTemplate.update(sql, quantity, productId);
     }
+
+    public boolean productExistsById(int productId) {
+        String sql = "SELECT EXISTS (SELECT 1 FROM products WHERE id = ?)";
+        return Boolean.TRUE.equals(jdbcTemplate.queryForObject(sql, Boolean.class, productId));
+    }
+
+    public boolean productExistsByName(String name) {
+        String sql = "SELECT COUNT(*) FROM products WHERE name = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, name);
+        return count != null && count > 0;
+    }
+
 }

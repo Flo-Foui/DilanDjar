@@ -43,13 +43,9 @@ public class UserDao {
         return rowsAffected > 0;
     }
 
-    public boolean existsByEmail(String email) {
-        String sql = "SELECT COUNT(*) FROM user WHERE email = ?";
-        try {
-            return jdbcTemplate.queryForObject(sql, Integer.class, email) > 0;
-        } catch (EmptyResultDataAccessException e) {
-            return false;
-        }
+    public boolean userExistsByEmail(String email) {
+        String sql = "SELECT EXISTS (SELECT 1 FROM user WHERE email = ?)";
+        return Boolean.TRUE.equals(jdbcTemplate.queryForObject(sql, Boolean.class, email));
     }
 
     public boolean updateUser(User user) {

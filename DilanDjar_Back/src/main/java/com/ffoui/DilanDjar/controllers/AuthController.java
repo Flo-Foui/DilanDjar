@@ -31,7 +31,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
-        boolean alreadyExists = userDao.existsByEmail(user.getEmail());
+        boolean alreadyExists = userDao.userExistsByEmail(user.getEmail());
         if (alreadyExists) {
             return ResponseEntity.badRequest().body("Error: Email is already use");
         }

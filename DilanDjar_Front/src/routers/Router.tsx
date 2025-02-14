@@ -12,7 +12,6 @@ import {AuthContext} from "../context/AuthContext";
 import Register from "../pages/2_body/Register";
 import Admin from "../pages/2_body/Admin";
 
-
 const Router: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext)
 

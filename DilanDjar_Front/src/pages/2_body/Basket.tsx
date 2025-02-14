@@ -17,7 +17,7 @@ import {useNavigate} from "react-router";
 import Page from "../../components/layout/Page";
 
 const Basket: FC = () => {
-    const {state, dispatch} = useBasket();
+    const {state, dispatch, checkout} = useBasket();
     const navigate = useNavigate()
 
     const handleQuantityChange = (id: number, quantity: number) => {
@@ -108,7 +108,7 @@ const Basket: FC = () => {
                                     variant="contained"
                                     color="primary"
                                     sx={{marginTop: "20px"}}
-                                    onClick={() => alert("Commande passée !")}
+                                    onClick={() => {checkout(3); alert("Commande passée !")}}
                                 >
                                     Passer la commande
                                 </Button>

@@ -1,7 +1,7 @@
 import {createContext, ReactNode, useContext, useReducer} from "react";
 import {BasketState} from "../@types/BasketState";
 import {BasketAction} from "../@types/BasketAction";
-
+import {post} from "../api/api";
 
 const basketReducer = (state: BasketState, action: BasketAction): BasketState => {
     switch (action.type) {
@@ -39,17 +39,37 @@ const basketReducer = (state: BasketState, action: BasketAction): BasketState =>
 
 const BasketContext = createContext<{
     state: BasketState;
-    dispatch: React.Dispatch<BasketAction>
+    dispatch: React.Dispatch<BasketAction>;
+    checkout: (userId: number) => Promise<void>;
 } | undefined>(undefined);
 
 export const BasketProvider = ({children}: { children: ReactNode }) => {
     const [state, dispatch] = useReducer(basketReducer, {items: []});
 
+    const checkout = async (orderId: number) => {
+        if (state.items.length === 0) return;
+
+        const orderItems = state.items.map(item => ({
+            orderId,
+            productId: item.id,
+            quantity: item.quantity
+        }));
+
+        // Envoyer chaque élément individuellement
+        for (const item of orderItems) {
+            await post("http://localhost:8080/order-items", item);
+        }
+
+        dispatch({type: "CLEAR_BASKET"});
+        console.log("Order items sent:", orderItems);
+    };
+
+
     return (
-        <BasketContext.Provider value={{state, dispatch}}>
+        <BasketContext.Provider value={{state, dispatch, checkout}}>
             {children}
         </BasketContext.Provider>
-    )
+    );
 };
 
 // Hook perso pour éviter les erreurs

@@ -1,6 +1,5 @@
 package com.ffoui.DilanDjar.entities;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
 public class Order {
@@ -12,7 +11,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, int userId, String email) {
+    public Order(int id, int userId) {
         this.id = id;
         this.userId = userId;
     }
@@ -24,8 +23,7 @@ public class Order {
     public int getUserId() {
         return userId;
     }
-
-
+    
     public void setId(int id) {
         this.id = id;
     }

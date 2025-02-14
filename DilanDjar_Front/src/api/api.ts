@@ -65,7 +65,7 @@ export const get = async (url: string, config?: {}) => {
         console.error(error);
     }}
 
-export const post = async (url: string, data?: {}, config?: {}) => {
+export const post = async (url: string, data: {}, config?: {}) => {
     try {
         const response = await axios.post(url, data, config);
         console.log("Response", response);
@@ -75,7 +75,7 @@ export const post = async (url: string, data?: {}, config?: {}) => {
     }
 };
 
-export const put = async (url: string, data?: {}, config?: {}) => {
+export const put = async (url: string, data: {}, config?: {}) => {
     try {
         const response = await axios.post(url, data, config);
         console.log("Response", response);

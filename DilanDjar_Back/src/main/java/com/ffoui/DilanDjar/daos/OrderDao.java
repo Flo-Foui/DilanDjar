@@ -1,11 +1,9 @@
 package com.ffoui.DilanDjar.daos;
 
 import com.ffoui.DilanDjar.entities.Order;
-import com.ffoui.DilanDjar.exceptions.ResourceNotFoundException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -16,47 +14,30 @@ public class OrderDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private final RowMapper<Order> orderRowMapper = (rs, _) -> new Order(
-            rs.getInt("id"),
-            rs.getInt("user_id"),
-            rs.getString("email")
-    );
+    private final RowMapper<Order> orderRowMapper = (rs, rowNum) -> {
+        Order order = new Order();
+        order.setId(rs.getInt("id"));
+        order.setUserId(rs.getInt("user_id"));
+        return order;
+    };
 
     public List<Order> getAllOrders() {
         String sql = "SELECT * FROM orders";
         return jdbcTemplate.query(sql, orderRowMapper);
     }
 
+    public Order getOrderById(int id) {
+        String sql = "SELECT * FROM orders WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, orderRowMapper, id);
+    }
+
     public List<Order> getOrdersByEmail(String email) {
-        String sql = "SELECT * FROM orders WHERE email = ?";
-        List<Order> orders = jdbcTemplate.query(sql, orderRowMapper, email);
-
-        if (orders.isEmpty()) {
-            throw new ResourceNotFoundException("Aucune commande trouvée pour l'Email : " + email);
-        }
-
-        return orders;
+        String sql = "SELECT orders.* FROM orders JOIN user ON orders.user_id = user.id WHERE u.email = ?";
+        return jdbcTemplate.query(sql, orderRowMapper, email);
     }
 
-    private boolean orderExistsById(Integer id) {
-        String checkSql = "SELECT COUNT(*) FROM orders WHERE id = ?";
-        Integer count = jdbcTemplate.queryForObject(checkSql, Integer.class, id);
-        return count != null && count > 0;
-    }
-
-    public boolean createOrder(Order order) {
+    public int createOrder(Order order) {
         String sql = "INSERT INTO orders (user_id) VALUES (?)";
-        int rowsAffected = jdbcTemplate.update(sql, order.getUserId());
-        return rowsAffected > 0;
-    }
-
-    public boolean deleteOrder(Integer id) {
-        if (!orderExistsById(id)) {
-            throw new ResourceNotFoundException("Commande avec l'ID : " + id + " n'existe pas");
-        }
-
-        String sql = "DELETE FROM orders WHERE id = ?";
-        int rowsAffected = jdbcTemplate.update(sql, id);
-        return rowsAffected > 0;
+        return jdbcTemplate.update(sql, order.getUserId());
     }
 }

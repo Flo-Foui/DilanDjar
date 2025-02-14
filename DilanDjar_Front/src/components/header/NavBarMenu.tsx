@@ -9,6 +9,8 @@ const pages = [
     {name: "Accueil", path: "../Dashboard"},
     {name: "Recherche", path: "../Search"},
     {name: "Panier", path: "../Basket"},
+    {name: "Admin", path: "../Admin"}
+
 ];
 
 const NavBarMenu: FC<{}> = ({}) => {

@@ -22,12 +22,11 @@ const LoginForm = () => {
     const onSubmit: SubmitHandler<LoginFormInput> = async (data) => {
         setErrorMessage(null);
         try {
-            const response = await post("http://localhost:8080/auth/login", data);
+            const response = await post(`http://localhost:8080/auth/login`, data);
 
-            if (response && response.token) {
-                console.log("Connexion réussie", response);
+            if (response) {
                 authContext?.setIsLoggedIn(true);
-                authContext?.setToken(response.token);
+                authContext?.setToken(response.data);
                 navigate("/");
             } else {
                 setErrorMessage("Identifiants incorrects !");

@@ -2,14 +2,15 @@ package com.ffoui.DilanDjar.controllers;
 
 import com.ffoui.DilanDjar.daos.ProductDao;
 import com.ffoui.DilanDjar.entities.Product;
-import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {
+
     private final ProductDao productDao;
 
     public ProductController(ProductDao productDao) {
@@ -22,31 +23,34 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Integer id) {
-        return ResponseEntity.ok(productDao.getProductById(id));
+    public Product getProductById(@PathVariable int id) {
+        return productDao.getProductById(id);
     }
 
     @PostMapping
-    public ResponseEntity<String> createProduct(@Valid @RequestBody Product product) {
-        return productDao.createProduct(product) ?
-                ResponseEntity.ok("Product created")
-                :
-                ResponseEntity.badRequest().body("Product not created");
+    public ResponseEntity<?> addProduct(@RequestBody Product product) {
+        try {
+            if (productDao.productExistsByName(product.getName())) {
+                return ResponseEntity.status(HttpStatus.CONFLICT)
+                        .body("Produit avec le nom " + product.getName() + " existe déjà.");
+            }
+            productDao.addProduct(product);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Produit ajouté avec succès !");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erreur lors de l'ajout du produit : " + e.getMessage());
+        }
     }
 
-    @PutMapping
-    public ResponseEntity<String> updateProduct(@Valid @RequestBody Product product) {
-        return productDao.updateProduct(product.getId(), product) ?
-                ResponseEntity.ok("Product updated")
-                :
-                ResponseEntity.badRequest().body("Product not updated");
+
+    @PutMapping("/{id}")
+    public void updateProduct(@PathVariable int id, @RequestBody Product product) {
+        product.setId(id);
+        productDao.updateProduct(product);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable Integer id) {
-        return productDao.deleteProduct(id) ?
-                ResponseEntity.ok("Product deleted")
-                :
-                ResponseEntity.badRequest().body("Product not deleted");
+    public void deleteProduct(@PathVariable int id) {
+        productDao.deleteProduct(id);
     }
 }
