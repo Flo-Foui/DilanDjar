@@ -1,6 +1,6 @@
 package com.ffoui.DilanDjar.controllers;
 
-import com.ffoui.DilanDjar.doas.UserDao;
+import com.ffoui.DilanDjar.daos.UserDao;
 import com.ffoui.DilanDjar.entities.User;
 import com.ffoui.DilanDjar.security.JwtUtil;
 import org.springframework.http.ResponseEntity;
@@ -38,8 +38,7 @@ public class AuthController {
 
         User newUser = new User(
                 user.getEmail(),
-                encoder.encode(user.getPassword()),
-                "USER"
+                encoder.encode(user.getPassword())
         );
         boolean isUserSaved = userDao.createUser(newUser);
         return isUserSaved ?
@@ -56,6 +55,7 @@ public class AuthController {
                         user.getPassword()
                 )
         );
+
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         return jwtUtil.generateToken((userDetails.getUsername()));
     }

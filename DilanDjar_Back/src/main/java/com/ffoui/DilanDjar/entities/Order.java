@@ -9,17 +9,12 @@ public class Order {
     @NotNull(message = "L'Id utilisateur est obligatoire")
     private int userId;
 
-    @Email(message = "L'email doit être valide")
-    @NotNull(message = "L'email est obligatoire")
-    private String email;
-
     public Order() {
     }
 
     public Order(int id, int userId, String email) {
         this.id = id;
         this.userId = userId;
-        this.email = email;
     }
 
     public int getId() {
@@ -30,9 +25,6 @@ public class Order {
         return userId;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -42,8 +34,5 @@ public class Order {
         this.userId = userId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
 

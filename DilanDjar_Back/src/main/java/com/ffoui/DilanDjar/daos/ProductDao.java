@@ -1,4 +1,4 @@
-package com.ffoui.DilanDjar.doas;
+package com.ffoui.DilanDjar.daos;
 
 import com.ffoui.DilanDjar.entities.Product;
 import com.ffoui.DilanDjar.exceptions.ResourceNotFoundException;
@@ -82,5 +82,10 @@ public class ProductDao {
         String sql = "DELETE FROM products WHERE id = ?";
         int rowsAffected = jdbcTemplate.update(sql, id);
         return rowsAffected > 0;
+    }
+
+    public void updateStock(int productId, int quantity) {
+        String sql = "UPDATE products SET stock = stock - ? WHERE id = ?";
+        jdbcTemplate.update(sql, quantity, productId);
     }
 }

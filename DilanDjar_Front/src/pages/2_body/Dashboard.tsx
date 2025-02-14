@@ -1,13 +1,16 @@
-import React, {FC, useEffect, useState, useTransition} from 'react';
+import React, {FC, useContext, useEffect, useState, useTransition} from 'react';
 import {get} from "../../api/api";
 import Box from "@mui/material/Box";
 import PlantItem from "../../components/PlantItem";
 import {PlantType} from "../../@types/PlantType";
 import Page from "../../components/layout/Page";
+import {AuthContext} from "../../context/AuthContext";
 
 const Dashboard: FC<{}> = ({}) => {
     const [plantCollection, setPlantCollection] = useState<PlantType[] | undefined>(undefined)
     const [isPending, startTransition] = useTransition()
+    const authContext = useContext(AuthContext);
+
 
     const hydrate = () => {
         // @ts-ignore

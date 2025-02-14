@@ -1,4 +1,4 @@
-package com.ffoui.DilanDjar.doas;
+package com.ffoui.DilanDjar.daos;
 
 import com.ffoui.DilanDjar.entities.Order;
 import com.ffoui.DilanDjar.exceptions.ResourceNotFoundException;
@@ -45,8 +45,8 @@ public class OrderDao {
     }
 
     public boolean createOrder(Order order) {
-        String sql = "INSERT INTO orders (user_id, email) VALUES (?, ?)";
-        int rowsAffected = jdbcTemplate.update(sql, order.getUserId(), order.getEmail());
+        String sql = "INSERT INTO orders (user_id) VALUES (?)";
+        int rowsAffected = jdbcTemplate.update(sql, order.getUserId());
         return rowsAffected > 0;
     }
 

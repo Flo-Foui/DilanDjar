@@ -1,8 +1,28 @@
 import axios from "axios";
+import {useContext} from "react";
+import {AuthContext} from "../context/AuthContext";
 
 axios.defaults.headers.post["Accept"] = "application/json";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.withCredentials = false;
+
+// Hook perso pour utiliser le contexte
+export const useAuth = () => {
+    return useContext(AuthContext);
+};
+
+/*axios.interceptors.request.use(
+    (config) => {
+        const token = useAuth()?.token;
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);*/
 
 axios.interceptors.response.use(
     (response) => {
@@ -36,13 +56,41 @@ axios.interceptors.response.use(
     }
 );
 
-export const get = (url: string, config?: {}) => {
-    return axios.get(url, config)
-        .then((response) => {
-            console.log("response", response);
-            return response.data;
-        })
-        .catch((error) => {
-        })
+export const get = async (url: string, config?: {}) => {
+    try {
+        const response = await axios.get(url, config);
+        console.log("Response", response);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }}
 
-}
+export const post = async (url: string, data?: {}, config?: {}) => {
+    try {
+        const response = await axios.post(url, data, config);
+        console.log("Response", response);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const put = async (url: string, data?: {}, config?: {}) => {
+    try {
+        const response = await axios.post(url, data, config);
+        console.log("Response", response);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const del = async (url: string, config?: {}) => {
+    try {
+        const response = await axios.post(url, config);
+        console.log("Response", response);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};

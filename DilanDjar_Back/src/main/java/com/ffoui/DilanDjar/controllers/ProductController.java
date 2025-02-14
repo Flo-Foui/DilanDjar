@@ -1,6 +1,6 @@
 package com.ffoui.DilanDjar.controllers;
 
-import com.ffoui.DilanDjar.doas.ProductDao;
+import com.ffoui.DilanDjar.daos.ProductDao;
 import com.ffoui.DilanDjar.entities.Product;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

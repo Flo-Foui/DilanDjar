@@ -6,6 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="e2066e35-7dac-43d2-8017-b99166d6f0d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/OrderItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/daos/OrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/OrderItemDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/daos/OrderItemDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/daos/ProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/doas/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/daos/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/entities/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/entities/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/security/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/security/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/services/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/java/com/ffoui/DilanDjar/services/CustomUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DilanDjar_Back/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DilanDjar_Back/src/main/resources/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +36,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/DilanDjar_Front" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -52,7 +67,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/greta/Desktop/DilanDjar/DilanDjar_Front/public",
+    "last_opened_file_path": "/home/greta/Desktop/DilanDjar/DilanDjar_Front/src/pages/2_body",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -65,6 +80,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/DilanDjar_Front/src/pages/2_body" />
       <recent name="$PROJECT_DIR$/DilanDjar_Front/public" />
       <recent name="$PROJECT_DIR$/DilanDjar_Front/src" />
       <recent name="$PROJECT_DIR$/DilanDjar_Front" />
@@ -95,7 +111,7 @@
       <workItem from="1739197930703" duration="9000" />
       <workItem from="1739367081288" duration="3928000" />
       <workItem from="1739372246864" duration="26248000" />
-      <workItem from="1739454204073" duration="957000" />
+      <workItem from="1739454204073" duration="30557000" />
     </task>
     <servers />
   </component>

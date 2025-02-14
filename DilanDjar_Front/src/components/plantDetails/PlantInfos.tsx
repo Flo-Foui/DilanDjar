@@ -11,6 +11,9 @@ const PlantInfos: FC<{plant: PlantType}> = ({plant}) => {
             <Typography gutterBottom variant="h4" component="div" color="white">
                 {plant.price} €
             </Typography>
+            <Typography gutterBottom variant="h5" component="div" color="white">
+                Stock restant : {plant.stock}
+            </Typography>
             <Typography gutterBottom variant="body1" component="p" color="white">
                 {plant.description ? plant.description : "Description non disponible"}
             </Typography>

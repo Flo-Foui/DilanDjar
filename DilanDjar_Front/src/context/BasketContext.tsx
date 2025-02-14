@@ -1,14 +1,7 @@
 import {createContext, ReactNode, useContext, useReducer} from "react";
+import {BasketState} from "../@types/BasketState";
+import {BasketAction} from "../@types/BasketAction";
 
-interface BasketState {
-    items: { id: number; name: string; price: number; quantity: number }[];
-}
-
-type BasketAction =
-    | { type: "ADD_TO_BASKET"; payload: { id: number; name: string; price: number; quantity: number } }
-    | { type: "REMOVE_FROM_BASKET"; payload: { id: number } }
-    | { type: "UPDATE_QUANTITY"; payload: { id: number; quantity: number } }
-    | { type: "CLEAR_BASKET" };
 
 const basketReducer = (state: BasketState, action: BasketAction): BasketState => {
     switch (action.type) {
@@ -59,7 +52,7 @@ export const BasketProvider = ({children}: { children: ReactNode }) => {
     )
 };
 
-// Hook pour éviter les erreurs
+// Hook perso pour éviter les erreurs
 export const useBasket = () => {
     const context = useContext(BasketContext);
     if (!context) {

@@ -8,10 +8,16 @@ const QuantityHandlerButton: FC<{plant : PlantType}> = ({plant}) => {
     const {dispatch} = useBasket();
 
     const addToBasket = () => {
+        if (quantity > plant.stock) {
+            alert("Stock insuffisant...");
+            return;
+        }
         dispatch({
             type: "ADD_TO_BASKET",
             payload: {id: plant.id, name: plant.name, price: plant.price, quantity},
+
         });
+        alert(quantity == 1 ? "Article ajouté au panier !" : "Articles ajoutés au panier !")
     };
 
     return (
@@ -31,7 +37,6 @@ const QuantityHandlerButton: FC<{plant : PlantType}> = ({plant}) => {
             <Button variant="contained" color="primary"
                     onClick={() => {
                         addToBasket();
-                        alert(quantity ==1 ? "Article ajouté au panier !" : "Articles ajoutés au panier !")
                     }}>
                 Ajouter au panier
             </Button>

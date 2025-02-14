@@ -1,8 +1,6 @@
 package com.ffoui.DilanDjar.controllers;
 
-import com.ffoui.DilanDjar.doas.OrderDao;
-import com.ffoui.DilanDjar.doas.OrderItemDao;
-import com.ffoui.DilanDjar.entities.Order;
+import com.ffoui.DilanDjar.daos.OrderItemDao;
 import com.ffoui.DilanDjar.entities.OrderItem;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

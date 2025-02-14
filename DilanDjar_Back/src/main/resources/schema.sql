@@ -11,21 +11,21 @@ CREATE TABLE IF NOT EXISTS products (
     description TEXT,
     poster_path VARCHAR(255),
     price DECIMAL(10,2) NOT NULL,
-    stock INT NOT NULL CHECK (stock >= 0)
-);
-
-CREATE TABLE IF NOT EXISTS orders (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    email VARCHAR(255) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE SET NULL
+    stock INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS order_item (
     id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT REFERENCES orders(id),
     products_id INT REFERENCES products(id),
-    quantity INT NOT NULL CHECK (quantity > 0),
+    quantity INT NOT NULL,
     FOREIGN KEY (order_id) REFERENCES orders(id),
     FOREIGN KEY (products_id) REFERENCES products(id)
 );
+
+CREATE TABLE IF NOT EXISTS orders (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE SET NULL
+);
+

@@ -13,7 +13,7 @@ public class User {
     private String password;
 
     @NotBlank(message = "Le rôle est obligatoire")
-    private String role;
+    private String role = "USER";
 
     public User() {}
 
@@ -24,10 +24,9 @@ public class User {
         this.role = role;
     }
 
-    public User(String email, String password, String role) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
-        this.role = role;
     }
 
     public int getId() {

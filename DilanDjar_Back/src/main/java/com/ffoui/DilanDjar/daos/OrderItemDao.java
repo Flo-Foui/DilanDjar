@@ -1,4 +1,4 @@
-package com.ffoui.DilanDjar.doas;
+package com.ffoui.DilanDjar.daos;
 
 import com.ffoui.DilanDjar.entities.OrderItem;
 import com.ffoui.DilanDjar.exceptions.ResourceNotFoundException;
